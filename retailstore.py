@@ -1,12 +1,25 @@
+import json
+
 print("=== Welcome to Anant's Shop ===")
 
-shop = {
-    "rice": {"price": 50, "quantity": 100},
-    "dal": {"price": 80, "quantity": 50},
-    "oil": {"price": 120, "quantity": 30},
-    "sugar": {"price": 45, "quantity": 75},
-    "wheat": {"price": 60, "quantity": 60}
-}
+
+def load_inventory():
+    try:
+        with open("shop.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {
+            "rice":  {"price": 50,  "quantity": 100},
+            "dal":   {"price": 80,  "quantity": 50},
+            "oil":   {"price": 120, "quantity": 30},
+            "sugar": {"price": 45,  "quantity": 75},
+            "wheat": {"price": 60,  "quantity": 60}
+        }
+
+
+def save_inventory(shop):
+    with open("shop.json", "w") as file:
+        json.dump(shop, file)
 
 
 def take_order():
@@ -60,12 +73,16 @@ def show_inventory(shop):
 
 
 # Main Program
+
+shop = load_inventory()    # load from file first
+
 item, quantity = take_order()
+
 
 if check_item(item, shop):
     total_bill = process_sale(item, quantity, shop)
-
     if total_bill > 0:
         print(f"Total bill: ₹{total_bill}")
-
     show_inventory(shop)
+
+save_inventory(shop)       # save to file at end

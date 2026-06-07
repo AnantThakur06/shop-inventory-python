@@ -1,0 +1,5 @@
+rice: 100
+dal: 50
+oil: 30
+sugar: 75
+wheat: 60salt: 40
