@@ -24,7 +24,11 @@ def save_inventory(shop):
 
 def take_order():
     order_item = input("What would you like to order? ").lower()
-    quantity = int(input("How many kg? "))
+    try:
+        quantity = int(input("How many kg? "))
+    except ValueError:
+        print("Invalid quantity. Setting quantity to 1.")
+        quantity = 1
     return order_item, quantity
 
 

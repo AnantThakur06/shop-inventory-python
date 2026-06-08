@@ -1,13 +1,27 @@
-# with open("inventory.txt", "w") as file:
-#      file.write("rice: 100\ndal: 50\noil: 30\nsugar: 75\nwheat: 60")
-# with open("inventory.txt", "r") as file:
-#     for line in file:
-#         print(line.strip())
-# with open("inventory.txt", "a") as file:
-#     file.write("salt: 40\n")
-#open("inventory.txt", "w") this will wipe out old data and will create new one 
-#open("inventory.txt", "a") this will not delete anything only will append at the last new item
-# shop = {
-#     "rice": {"price": 50, "quantity": 100},
-#     "dal":  {"price": 80, "quantity": 50}
-# } we can iterate through loops and save it in file as txt format like we did in our loops section 
+try:
+    number = int(input(f"Enter a number :  "))
+    result = 100 / number 
+
+except ValueError:
+    print(f"Please enter a valid number.")
+
+except ZeroDivisionError:
+    print(f"Error: cannot divide by zero.")
+
+else:
+    print(f"Result: {result}")
+    
+# 2nd 
+
+try:
+    numbers = [1, 2, 3]
+    print(numbers[10])
+except IndexError:
+    print("Index does not exist")
+except ValueError:
+    print("Wrong value")
+finally:
+    print("Done")
+
+# this is a index error not a value one so "index does not exist" and finally will execute so done will also print 
+
