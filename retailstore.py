@@ -1,21 +1,17 @@
-from shop_functions import load_inventory, save_inventory
-from shop_functions import take_order, check_item
-from shop_functions import process_sale, show_inventory
+from shop_functions import Shop, take_order
 
 
 print("=== Welcome to Anant's Shop ===")
 
 # Main Program
 
-shop = load_inventory()    # load from file first
-
+my_shop = Shop()                    # creates object — __init__ runs, loads inventory
 item, quantity = take_order()
 
-
-if check_item(item, shop):
-    total_bill = process_sale(item, quantity, shop)
+if my_shop.check_item(item):        # no need to pass inventory — object knows its own
+    total_bill = my_shop.process_sale(item, quantity)
     if total_bill > 0:
         print(f"Total bill: ₹{total_bill}")
-    show_inventory(shop)
+    my_shop.show_inventory()
 
-save_inventory(shop)       # save to file at end
+my_shop.save_inventory()
